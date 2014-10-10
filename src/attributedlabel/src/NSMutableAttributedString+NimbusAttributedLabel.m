@@ -64,11 +64,13 @@ NI_FIX_CATEGORY_BUG(NSMutableAttributedStringNimbusAttributedLabel)
 }
 
 - (void)setTextColor:(UIColor *)color range:(NSRange)range {
-  [self removeAttribute:NSForegroundColorAttributeName range:range];
-
-  if (nil != color) {
-    [self addAttribute:NSForegroundColorAttributeName value:color range:range];
-  }
+    if (range.length > 0) {
+        [self removeAttribute:NSForegroundColorAttributeName range:range];
+        
+        if (nil != color) {
+            [self addAttribute:NSForegroundColorAttributeName value:color range:range];
+        }
+    }
 }
 
 - (void)setTextColor:(UIColor *)color {
